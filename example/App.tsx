@@ -23,6 +23,7 @@ const stories = [
     key: "Lorem Sit",
     hasStory: true,
     hasStoryRingColor: ["#20fab1", "#20fab1"],
+    notificationCount: 99,
     source: {
       uri:
         "https://images.unsplash.com/uploads/14110635637836178f553/dcc2ccd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
@@ -98,7 +99,7 @@ const App = () => {
         >
           {stories.map((item) => {
             return (
-              <View style={{ marginLeft: 12 }}>
+              <View key={item.name} style={{ marginLeft: 12 }}>
                 <IGStoryCircle
                   {...item}
                   isStoryInsertable={item.isStoryInsertable}

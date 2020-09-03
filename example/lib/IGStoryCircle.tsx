@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Text, Image, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
  */
@@ -56,56 +57,62 @@ const IGStoryCircle = (props: IProps) => {
   const borderSize = (size * 6) / 100;
   const innerBorderSize = (size * 3) / 100;
 
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={
-          isStoryRead
-            ? storyReadRingColor
-            : hasStory
-            ? hasStoryRingColor
-            : defaultRingColor
-        }
-        start={{ x: 0.0, y: 1.0 }}
-        end={{ x: 1.0, y: 1.0 }}
-        useAngle={true}
-        angle={45}
-        style={_storyRing(size)}
+  const renderAddIcon = () =>
+    !hasStory &&
+    isStoryInsertable && (
+      <View
+        style={_insertIconContainer(
+          insertStoryTop || (size * 8) / 12,
+          insertStoryStart || (size * 8) / 12,
+        )}
       >
         <Image
-          source={source}
-          style={_profileImageStyle(
-            innerCircleSize || size - borderSize,
-            profileImageBorderSize || hasStory ? innerBorderSize : 0,
-          )}
+          source={require("./local-assets/add_story.png")}
+          style={styles.insertIcon}
+          resizeMode="contain"
         />
-      </LinearGradient>
-      {!hasStory && isStoryInsertable && (
-        <View
-          style={_insertIconContainer(
-            insertStoryTop || (size * 8) / 12,
-            insertStoryStart || (size * 8) / 12,
-          )}
+      </View>
+    );
+
+  return (
+    <RNBounceable onPress={() => {}}>
+      <View style={styles.container}>
+        <LinearGradient
+          colors={
+            isStoryRead
+              ? storyReadRingColor
+              : hasStory
+              ? hasStoryRingColor
+              : defaultRingColor
+          }
+          start={{ x: 0.0, y: 1.0 }}
+          end={{ x: 1.0, y: 1.0 }}
+          useAngle={true}
+          angle={45}
+          style={_storyRing(size)}
         >
           <Image
-            source={require("./local-assets/add_story.png")}
-            style={styles.insertIcon}
-            resizeMode="contain"
+            source={source}
+            style={_profileImageStyle(
+              innerCircleSize || size - borderSize,
+              profileImageBorderSize || hasStory ? innerBorderSize : 0,
+            )}
           />
-        </View>
-      )}
-      {notificationCount && (
-        <View
-          style={_notificationContainer(
-            notificationSize || 15,
-            notificationPositionTop || size / 12,
-            notificationPositionStart || (size * 8) / 12,
-          )}
-        >
-          <Text style={styles.notificationText}>{notificationCount}</Text>
-        </View>
-      )}
-    </View>
+        </LinearGradient>
+        {renderAddIcon()}
+        {notificationCount && (
+          <View
+            style={_notificationContainer(
+              notificationSize || 15,
+              notificationPositionTop || size / 12,
+              notificationPositionStart || (size * 8) / 12,
+            )}
+          >
+            <Text style={styles.notificationText}>{notificationCount}</Text>
+          </View>
+        )}
+      </View>
+    </RNBounceable>
   );
 };
 
