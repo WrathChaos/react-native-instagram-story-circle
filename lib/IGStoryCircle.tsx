@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Text, Image, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import RNBounceable from "@freakycoder/react-native-bounceable";
