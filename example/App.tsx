@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, StatusBar, ScrollView, SafeAreaView } from "react-native";
-import IGStoryCircle from "./lib/IGStoryCircle";
+import IGStoryCircle from "react-native-instagram-story-circle";
 
 const stories = [
   {

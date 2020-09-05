@@ -107,7 +107,7 @@ IGStoryCircle.defaultProps = {
   innerBorderColor: "#000",
   defaultRingColor: ["#000", "#000"],
   storyRingColor: ["#feda75", "#d62976"],
-  notificationBubbleBackgroundColor: "#d00",
+  notificationBubbleBackgroundColor: "#eb3434",
 };
 
 export default IGStoryCircle;
