@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from "react-native";
+import { View, Image, StatusBar, ScrollView, SafeAreaView } from "react-native";
 import IGStoryCircle from "./lib/IGStoryCircle";
 
 const stories = [
@@ -23,7 +16,7 @@ const stories = [
     key: "Lorem Sit",
     hasStory: true,
     hasStoryRingColor: ["#20fab1", "#20fab1"],
-    notificationCount: 99,
+    notificationCount: 3,
     source: {
       uri:
         "https://images.unsplash.com/uploads/14110635637836178f553/dcc2ccd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
@@ -33,6 +26,7 @@ const stories = [
     key: "Parturient Aenean Fringilla",
     hasStory: true,
     hasStoryRingColor: ["#eb3434", "#eb3434"],
+    isStoryRead: true,
     source: {
       uri:
         "https://images.unsplash.com/photo-1496440737103-cd596325d314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
@@ -84,15 +78,47 @@ const stories = [
 ];
 
 const App = () => {
+  const renderHeader = () => {
+    return (
+      <View
+        style={{
+          padding: 16,
+          alignContent: "center",
+          flexDirection: "row",
+          backgroundColor: "#1a1a1a",
+        }}
+      >
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Image
+            source={require("./assets/camera.png")}
+            style={{ height: 25, width: 25 }}
+          />
+          <Image
+            resizeMode="contain"
+            source={require("./assets/ig-logo.png")}
+            style={{ left: 8, top: 3, height: 25, width: 100 }}
+          />
+        </View>
+        <View style={{ marginLeft: "auto" }}>
+          <Image
+            source={require("./assets/send.png")}
+            style={{ height: 25, width: 25 }}
+          />
+        </View>
+      </View>
+    );
+  };
+
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content" />
       <SafeAreaView style={{ flex: 1, backgroundColor: "#000" }}>
+        {renderHeader()}
         <ScrollView
           horizontal
+          style={{ marginTop: 16 }}
           contentContainerStyle={{
-            marginTop: 24,
-            marginLeft: 8,
+            margin: 8,
             flexDirection: "row",
             justifyContent: "space-between",
           }}
@@ -102,9 +128,9 @@ const App = () => {
               <View key={item.name} style={{ marginLeft: 12 }}>
                 <IGStoryCircle
                   {...item}
-                  isStoryInsertable={item.isStoryInsertable}
-                  hasStory={item.hasStory}
                   source={item.source}
+                  hasStory={item.hasStory}
+                  onPress={() => {}}
                 />
               </View>
             );

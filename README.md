@@ -82,9 +82,9 @@ import MyComponent from "react-native-typescript-library-starter";
 - [x] ~~LICENSE~~
 - [ ] Write an article about the lib on Medium
 
-# Change Log
+## Credits
 
-Change log will be here !
+Inspired on [Zafer Ayan's Medium Article]https://medium.com/@ZaferAyan/react-native-instagram-proje-mimarisi-9031e75a72de
 
 ## Author
 

@@ -6,7 +6,7 @@ interface Style {
   notificationText: TextStyle;
 }
 
-export const _storyRing = (size: number): ViewStyle => ({
+export const _storyRing = (size: number = 64): ViewStyle => ({
   width: size,
   height: size,
   borderRadius: size / 2,
@@ -15,47 +15,32 @@ export const _storyRing = (size: number): ViewStyle => ({
 });
 
 export const _profileImageStyle = (
-  innerCircleSize: number,
-  profileImageBorderSize: number,
+  innerCircleSize?: number,
+  profileImageBorderSize?: number,
+  borderRingColor?: string,
 ): ImageStyle => ({
-  borderColor: "#000",
   width: innerCircleSize,
   height: innerCircleSize,
+  borderColor: borderRingColor,
   borderRadius: innerCircleSize,
   borderWidth: profileImageBorderSize,
 });
 
-export const _insertIconContainer = (
-  insertStoryTop: number,
-  insertStoryStart: number,
-): ViewStyle => ({
-  width: 20,
-  height: 20,
-  borderWidth: 3,
-  borderRadius: 20,
-  top: insertStoryTop,
-  position: "absolute",
-  alignItems: "center",
-  borderColor: "#000",
-  start: insertStoryStart,
-  justifyContent: "center",
-  backgroundColor: "#30ABF1",
-});
-
 export const _notificationContainer = (
-  notificationSize: number,
-  notificationPositionTop: number,
-  notificationPositionStart: number,
+  notificationSize?: number,
+  notificationBubbleBackgroundColor?: string,
+  notificationPositionTop?: number,
+  notificationPositionLeft?: number,
 ): ViewStyle => ({
   position: "absolute",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "#d00",
   width: notificationSize,
   height: notificationSize,
   top: notificationPositionTop,
+  left: notificationPositionLeft,
   borderRadius: notificationSize,
-  start: notificationPositionStart,
+  backgroundColor: notificationBubbleBackgroundColor,
 });
 
 export default StyleSheet.create<Style>({

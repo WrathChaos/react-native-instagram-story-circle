@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Text, Image, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import RNBounceable from "@freakycoder/react-native-bounceable";
@@ -9,7 +8,6 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 import styles, {
   _storyRing,
   _profileImageStyle,
-  _insertIconContainer,
   _notificationContainer,
 } from "./IGStoryCircle.style";
 
@@ -22,98 +20,102 @@ interface IProps {
   innerCircleSize?: number;
   insertStoryStart?: number;
   notificationCount?: number;
-  isStoryInsertable?: boolean;
   profileImageBorderSize?: number;
   notificationSize?: number;
   notificationPositionTop?: number;
-  notificationPositionStart?: number;
-  storyReadRingColor?: [string, string];
+  notificationPositionLeft?: number;
+  storyIsReadRingColor?: [string, string];
   hasStoryRingColor?: [string, string];
   defaultRingColor?: [string, string];
+  notificationBubbleBackgroundColor?: string;
+  innerBorderColor: string;
+  onPress: () => void;
 }
-
-interface IState {}
 
 const IGStoryCircle = (props: IProps) => {
   const {
-    isStoryRead,
-    hasStory,
     size = 64,
     source,
+    onPress,
+    hasStory,
+    isStoryRead,
     innerCircleSize,
-    insertStoryTop,
-    insertStoryStart,
-    notificationCount,
-    isStoryInsertable,
-    profileImageBorderSize,
     notificationSize,
+    defaultRingColor,
+    innerBorderColor,
+    notificationCount,
+    hasStoryRingColor,
+    storyIsReadRingColor,
+    profileImageBorderSize,
     notificationPositionTop,
-    notificationPositionStart,
-    storyReadRingColor = ["#ddd"],
-    hasStoryRingColor = ["#feda75", "#d62976"],
-    defaultRingColor = ["#000", "#000"],
+    notificationPositionLeft,
+    notificationBubbleBackgroundColor,
   } = props;
 
   const borderSize = (size * 6) / 100;
   const innerBorderSize = (size * 3) / 100;
+  const defaultNotificationPositionTop = size / 12;
+  const defaultNotificationPositionLeft = (size * 9) / 12;
 
-  const renderAddIcon = () =>
-    !hasStory &&
-    isStoryInsertable && (
+  const generateRingColor = () => {
+    if (isStoryRead) return storyIsReadRingColor;
+    else {
+      if (hasStory) return hasStoryRingColor;
+      else return defaultRingColor;
+    }
+  };
+
+  const renderNotificationCount = () =>
+    notificationCount && (
       <View
-        style={_insertIconContainer(
-          insertStoryTop || (size * 8) / 12,
-          insertStoryStart || (size * 8) / 12,
+        style={_notificationContainer(
+          notificationSize,
+          notificationBubbleBackgroundColor,
+          notificationPositionTop || defaultNotificationPositionTop,
+          notificationPositionLeft || defaultNotificationPositionLeft,
         )}
       >
-        <Image
-          source={require("./local-assets/add_story.png")}
-          style={styles.insertIcon}
-          resizeMode="contain"
-        />
+        <Text style={styles.notificationText}>{notificationCount}</Text>
       </View>
     );
 
-  return (
-    <RNBounceable onPress={() => {}}>
-      <View style={styles.container}>
-        <LinearGradient
-          colors={
-            isStoryRead
-              ? storyReadRingColor
-              : hasStory
-              ? hasStoryRingColor
-              : defaultRingColor
-          }
-          start={{ x: 0.0, y: 1.0 }}
-          end={{ x: 1.0, y: 1.0 }}
-          useAngle={true}
-          angle={45}
-          style={_storyRing(size)}
-        >
-          <Image
-            source={source}
-            style={_profileImageStyle(
-              innerCircleSize || size - borderSize,
-              profileImageBorderSize || hasStory ? innerBorderSize : 0,
-            )}
-          />
-        </LinearGradient>
-        {renderAddIcon()}
-        {notificationCount && (
-          <View
-            style={_notificationContainer(
-              notificationSize || 15,
-              notificationPositionTop || size / 12,
-              notificationPositionStart || (size * 8) / 12,
-            )}
-          >
-            <Text style={styles.notificationText}>{notificationCount}</Text>
-          </View>
+  const renderIGCircle = () => (
+    <LinearGradient
+      useAngle
+      angle={45}
+      style={_storyRing(size)}
+      colors={generateRingColor()}
+      start={{ x: 0.0, y: 1.0 }}
+      end={{ x: 1.0, y: 1.0 }}
+    >
+      <Image
+        source={source}
+        style={_profileImageStyle(
+          innerCircleSize || size - borderSize,
+          profileImageBorderSize || hasStory ? innerBorderSize : 0,
+          innerBorderColor,
         )}
+      />
+    </LinearGradient>
+  );
+
+  return (
+    <RNBounceable onPress={onPress}>
+      <View style={styles.container}>
+        {renderIGCircle()}
+        {renderNotificationCount()}
       </View>
     </RNBounceable>
   );
+};
+
+IGStoryCircle.defaultProps = {
+  notificationSize: 18,
+  innerBorderColor: "#000",
+  storyIsReadRingColor: ["#ddd"],
+  defaultRingColor: ["#000", "#000"],
+  notificationBubbleBackgroundColor: "#d00",
+  hasStoryRingColor: ["#feda75", "#d62976"],
 };
 
 export default IGStoryCircle;
