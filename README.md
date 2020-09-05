@@ -10,7 +10,7 @@
 
 <p align="center">
   <img alt="React Native Instagram Story Circle"
-        src="assets/Screenshots/typescript.jpg" />
+        src="assets/Screenshots/React-Native-Instagram-Story-Circle.gif" />
 </p>
 
 # Installation
