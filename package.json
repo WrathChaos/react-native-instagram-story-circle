@@ -1,8 +1,8 @@
 {
   "name": "react-native-instagram-story-circle",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fully customizable Instagram Story Circle with Bounceable Animated Library for React Native",
-  "main": "./build/dist/index.js",
+  "main": "./build/dist/IGStoryCircle.js",
   "repository": "git@github.com:WrathChaos/react-native-instagram-story-circle.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
