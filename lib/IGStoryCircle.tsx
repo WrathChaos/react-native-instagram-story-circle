@@ -15,7 +15,6 @@ interface IProps {
   size?: number;
   source: any;
   hasStory?: boolean;
-  isStoryRead?: boolean;
   insertStoryTop?: number;
   innerCircleSize?: number;
   insertStoryStart?: number;
@@ -24,8 +23,7 @@ interface IProps {
   notificationSize?: number;
   notificationPositionTop?: number;
   notificationPositionLeft?: number;
-  storyIsReadRingColor?: [string, string];
-  hasStoryRingColor?: [string, string];
+  storyRingColor?: [string, string];
   defaultRingColor?: [string, string];
   notificationBubbleBackgroundColor?: string;
   innerBorderColor: string;
@@ -38,14 +36,12 @@ const IGStoryCircle = (props: IProps) => {
     source,
     onPress,
     hasStory,
-    isStoryRead,
     innerCircleSize,
     notificationSize,
     defaultRingColor,
     innerBorderColor,
     notificationCount,
-    hasStoryRingColor,
-    storyIsReadRingColor,
+    storyRingColor,
     profileImageBorderSize,
     notificationPositionTop,
     notificationPositionLeft,
@@ -58,11 +54,8 @@ const IGStoryCircle = (props: IProps) => {
   const defaultNotificationPositionLeft = (size * 9) / 12;
 
   const generateRingColor = () => {
-    if (isStoryRead) return storyIsReadRingColor;
-    else {
-      if (hasStory) return hasStoryRingColor;
-      else return defaultRingColor;
-    }
+    if (hasStory) return storyRingColor;
+    else return defaultRingColor;
   };
 
   const renderNotificationCount = () =>
@@ -112,10 +105,9 @@ const IGStoryCircle = (props: IProps) => {
 IGStoryCircle.defaultProps = {
   notificationSize: 18,
   innerBorderColor: "#000",
-  storyIsReadRingColor: ["#ddd"],
   defaultRingColor: ["#000", "#000"],
+  storyRingColor: ["#feda75", "#d62976"],
   notificationBubbleBackgroundColor: "#d00",
-  hasStoryRingColor: ["#feda75", "#d62976"],
 };
 
 export default IGStoryCircle;

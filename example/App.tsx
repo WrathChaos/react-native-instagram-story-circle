@@ -5,7 +5,6 @@ import IGStoryCircle from "./lib/IGStoryCircle";
 const stories = [
   {
     name: "Mattis",
-    isStoryInsertable: true,
     hasStory: false,
     source: {
       uri:
@@ -15,7 +14,7 @@ const stories = [
   {
     key: "Lorem Sit",
     hasStory: true,
-    hasStoryRingColor: ["#20fab1", "#20fab1"],
+    storyRingColor: ["#20fab1", "#20fab1"],
     notificationCount: 3,
     source: {
       uri:
@@ -25,7 +24,7 @@ const stories = [
   {
     key: "Parturient Aenean Fringilla",
     hasStory: true,
-    hasStoryRingColor: ["#eb3434", "#eb3434"],
+    storyRingColor: ["#eb3434", "#eb3434"],
     isStoryRead: true,
     source: {
       uri:
@@ -35,7 +34,7 @@ const stories = [
   {
     key: "Parturient",
     hasStory: true,
-    hasStoryRingColor: ["#e22ae8", "#e22ae8"],
+    storyRingColor: ["#e22ae8", "#e22ae8"],
     // isStoryRead: true,
     source: {
       uri:
@@ -45,7 +44,7 @@ const stories = [
   {
     key: "Adipiscing",
     hasStory: true,
-    hasStoryRingColor: ["#3492eb", "#3492eb"],
+    storyRingColor: ["#3492eb", "#3492eb"],
     source: {
       uri:
         "https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
