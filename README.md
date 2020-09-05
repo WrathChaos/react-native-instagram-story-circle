@@ -71,7 +71,7 @@ Please look at the `example` simply run it and check how it works :)
 
 ## Credits
 
-Inspired on [Zafer Ayan's Medium Article]https://medium.com/@ZaferAyan/react-native-instagram-proje-mimarisi-9031e75a72de
+Inspired on [Zafer Ayan's Medium Article](https://medium.com/@ZaferAyan/react-native-instagram-proje-mimarisi-9031e75a72de)
 
 ## Author
 
