@@ -48,22 +48,23 @@ Please look at the `example` simply run it and check how it works :)
 
 # Configuration - Props
 
-| Property                          |       Type       |        Default         | Description                                                 |
-| --------------------------------- | :--------------: | :--------------------: | ----------------------------------------------------------- |
-| source                            |      image       |       undefined        | set the image for the circle                                |
-| size                              |      number      |           64           | change the size of the circle                               |
-| onPress                           |     function     |       undefined        | set the onPress functionality when the component is pressed |
-| innerBorderColor                  |      string      |         "#000"         | change the inner circle of the component                    |
-| borderRadius                      |      number      |           64           | change the whole instagram story circle's border radius     |
-| hasStory                          |     boolean      |       undefined        | set true to activate story's colorful ring                  |
-| storyRingColor                    | [string, string] | ["#feda75", "#d62976"] | change the ring color                                       |
-| defaultRingColor                  | [string, string] |    ["#000", "#000"]    | change the default ring color when `hasStory` is false      |
-| profileImageBorderSize            |      number      |           0            | change the profile image border size                        |
-| notificationCount                 |      number      |       undefined        | set the notification count                                  |
-| notificationBubbleBackgroundColor |      color       |       "#eb3434"        | change the notification background color                    |
-| notificationSize                  |      number      |           18           | change the notification circle's size                       |
-| notificationPositionTop           |      number      |        default         | change the notification circle's position of the top side   |
-| notificationPositionLeft          |      number      |        default         | change the notification circle's position of the left side  |
+| Property                          |       Type       |        Default         | Description                                                   |
+| --------------------------------- | :--------------: | :--------------------: | ------------------------------------------------------------- |
+| source                            |      image       |       undefined        | set the image for the circle                                  |
+| size                              |      number      |           64           | change the size of the circle                                 |
+| onPress                           |     function     |       undefined        | set the onPress functionality when the component is pressed   |
+| innerBorderColor                  |      string      |         "#000"         | change the inner circle of the component                      |
+| outerBorderRadius                 |      number      |           32           | change the whole instagram story circle's outer border radius |
+| innerBorderRadius                 |      number      |           32           | change the whole instagram story circle's inner border radius |
+| hasStory                          |     boolean      |       undefined        | set true to activate story's colorful ring                    |
+| storyRingColor                    | [string, string] | ["#feda75", "#d62976"] | change the ring color                                         |
+| defaultRingColor                  | [string, string] |    ["#000", "#000"]    | change the default ring color when `hasStory` is false        |
+| profileImageBorderSize            |      number      |           0            | change the profile image border size                          |
+| notificationCount                 |      number      |       undefined        | set the notification count                                    |
+| notificationBubbleBackgroundColor |      color       |       "#eb3434"        | change the notification background color                      |
+| notificationSize                  |      number      |           18           | change the notification circle's size                         |
+| notificationPositionTop           |      number      |        default         | change the notification circle's position of the top side     |
+| notificationPositionLeft          |      number      |        default         | change the notification circle's position of the left side    |
 
 ## Future Plans
 

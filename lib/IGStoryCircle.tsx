@@ -15,13 +15,14 @@ interface IProps {
   size?: number;
   source: any;
   hasStory?: boolean;
-  borderRadius?: number;
   insertStoryTop?: number;
   innerCircleSize?: number;
   insertStoryStart?: number;
+  notificationSize?: number;
+  innerBorderRadius?: number;
+  outerBorderRadius?: number;
   notificationCount?: number;
   profileImageBorderSize?: number;
-  notificationSize?: number;
   notificationPositionTop?: number;
   notificationPositionLeft?: number;
   storyRingColor?: [string, string];
@@ -37,13 +38,14 @@ const IGStoryCircle = (props: IProps) => {
     source,
     onPress,
     hasStory,
-    borderRadius = 32,
     storyRingColor,
     innerCircleSize,
     notificationSize,
     defaultRingColor,
     innerBorderColor,
     notificationCount,
+    innerBorderRadius = 32,
+    outerBorderRadius = 32,
     profileImageBorderSize,
     notificationPositionTop,
     notificationPositionLeft,
@@ -78,7 +80,7 @@ const IGStoryCircle = (props: IProps) => {
     <LinearGradient
       useAngle
       angle={45}
-      style={_storyRing(size, borderRadius)}
+      style={_storyRing(size, outerBorderRadius)}
       colors={generateRingColor()}
       start={{ x: 0.0, y: 1.0 }}
       end={{ x: 1.0, y: 1.0 }}
@@ -89,7 +91,7 @@ const IGStoryCircle = (props: IProps) => {
           innerCircleSize || size - borderSize,
           profileImageBorderSize || hasStory ? innerBorderSize : 0,
           innerBorderColor,
-          borderRadius,
+          innerBorderRadius,
         )}
       />
     </LinearGradient>
