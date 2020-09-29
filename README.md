@@ -54,6 +54,7 @@ Please look at the `example` simply run it and check how it works :)
 | size                              |      number      |           64           | change the size of the circle                               |
 | onPress                           |     function     |       undefined        | set the onPress functionality when the component is pressed |
 | innerBorderColor                  |      string      |         "#000"         | change the inner circle of the component                    |
+| borderRadius                      |      number      |           64           | change the whole instagram story circle's border radius     |
 | hasStory                          |     boolean      |       undefined        | set true to activate story's colorful ring                  |
 | storyRingColor                    | [string, string] | ["#feda75", "#d62976"] | change the ring color                                       |
 | defaultRingColor                  | [string, string] |    ["#000", "#000"]    | change the default ring color when `hasStory` is false      |

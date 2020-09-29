@@ -6,10 +6,13 @@ interface Style {
   notificationText: TextStyle;
 }
 
-export const _storyRing = (size: number = 64): ViewStyle => ({
+export const _storyRing = (
+  size: number = 64,
+  borderRadius: number,
+): ViewStyle => ({
   width: size,
   height: size,
-  borderRadius: size / 2,
+  borderRadius: borderRadius ? borderRadius : size / 2,
   alignItems: "center",
   justifyContent: "center",
 });
@@ -18,12 +21,13 @@ export const _profileImageStyle = (
   innerCircleSize?: number,
   profileImageBorderSize?: number,
   borderRingColor?: string,
+  borderRadius?: number,
 ): ImageStyle => ({
   width: innerCircleSize,
   height: innerCircleSize,
   borderColor: borderRingColor,
-  borderRadius: innerCircleSize,
   borderWidth: profileImageBorderSize,
+  borderRadius: borderRadius ? borderRadius : innerCircleSize,
 });
 
 export const _notificationContainer = (
