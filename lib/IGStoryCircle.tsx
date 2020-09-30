@@ -12,10 +12,10 @@ import styles, {
 } from "./IGStoryCircle.style";
 
 interface IProps {
-  size?: number;
   source: any;
+  size?: number;
   hasStory?: boolean;
-  ImageComponent?: any;
+  innerBorderColor: string;
   insertStoryTop?: number;
   innerCircleSize?: number;
   insertStoryStart?: number;
@@ -29,7 +29,8 @@ interface IProps {
   storyRingColor?: [string, string];
   defaultRingColor?: [string, string];
   notificationBubbleBackgroundColor?: string;
-  innerBorderColor: string;
+  ImageHost?: any;
+  ImageComponent?: any;
   onPress: () => void;
 }
 
@@ -51,6 +52,7 @@ const IGStoryCircle = (props: IProps) => {
     notificationPositionTop,
     notificationPositionLeft,
     notificationBubbleBackgroundColor,
+    ImageHost = View,
     ImageComponent = Image,
   } = props;
 
@@ -87,15 +89,17 @@ const IGStoryCircle = (props: IProps) => {
       start={{ x: 0.0, y: 1.0 }}
       end={{ x: 1.0, y: 1.0 }}
     >
-      <ImageComponent
-        source={source}
-        style={_profileImageStyle(
-          innerCircleSize || size - borderSize,
-          profileImageBorderSize || hasStory ? innerBorderSize : 0,
-          innerBorderColor,
-          innerBorderRadius,
-        )}
-      />
+      <ImageHost>
+        <ImageComponent
+          source={source}
+          style={_profileImageStyle(
+            innerCircleSize || size - borderSize,
+            profileImageBorderSize || hasStory ? innerBorderSize : 0,
+            innerBorderColor,
+            innerBorderRadius,
+          )}
+        />
+      </ImageHost>
     </LinearGradient>
   );
 
