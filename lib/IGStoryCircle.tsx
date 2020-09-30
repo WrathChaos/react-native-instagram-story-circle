@@ -15,6 +15,7 @@ interface IProps {
   size?: number;
   source: any;
   hasStory?: boolean;
+  ImageComponent?: any;
   insertStoryTop?: number;
   innerCircleSize?: number;
   insertStoryStart?: number;
@@ -50,6 +51,7 @@ const IGStoryCircle = (props: IProps) => {
     notificationPositionTop,
     notificationPositionLeft,
     notificationBubbleBackgroundColor,
+    ImageComponent = Image,
   } = props;
 
   const borderSize = (size * 6) / 100;
@@ -85,7 +87,7 @@ const IGStoryCircle = (props: IProps) => {
       start={{ x: 0.0, y: 1.0 }}
       end={{ x: 1.0, y: 1.0 }}
     >
-      <Image
+      <ImageComponent
         source={source}
         style={_profileImageStyle(
           innerCircleSize || size - borderSize,
